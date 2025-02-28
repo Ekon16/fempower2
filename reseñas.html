@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reseñas y Testimonios - Fem Power</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg" href="src/fabicon.svg">
+</head>
+<body>
+
+  <!-- Header (Reutilizando el encabezado principal) -->
+  <header>
+    <div class="container header-container">
+      <div class="logo"></div>
+      <!-- Menú de navegación -->
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Menú móvil -->
+      <nav class="mobile-menu">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección de Reseñas -->
+  <section class="testimonials">
+    <div class="container">
+      <h1>✨ Reseñas y Testimonios ✨</h1>
+      <p>Descubre lo que dicen nuestras clientas sobre nuestros productos. ¡Tú también puedes compartir tu experiencia! 💖</p>
+      
+      <div class="review">
+        <h3>🌟 Sofía M. - 32 años <span>(Radiance Revive)</span></h3>
+        <p>"¡Estoy enamorada de Radiance Revive! 😍 Mi piel ha cambiado completamente en pocas semanas. Antes tenía manchas y se veía opaca, pero ahora luce mucho más luminosa e hidratada. Hasta mis amigas me preguntan qué estoy usando. Definitivamente lo seguiré comprando."</p>
+      </div>
+
+      <div class="review">
+        <h3>💖 Camila R. - 40 años <span>(Anti-Aging Shield)</span></h3>
+        <p>"Siempre he sido muy cuidadosa con mi piel, pero Anti-Aging Shield ha sido un game changer. Noté mi piel más firme y con menos líneas de expresión después de un mes. Me encanta que tenga antioxidantes y sea fácil de tomar en gomitas. ¡Recomiendo 100%!"</p>
+      </div>
+
+      <div class="review">
+        <h3>🌿 Valeria T. - 27 años <span>(Clear Complexion)</span></h3>
+        <p>"Luché con brotes y piel grasa durante años, probando de todo sin éxito. Desde que empecé a tomar Clear Complexion, mi piel ha mejorado muchísimo. Ya no tengo esos brotes dolorosos y mi piel se ve más equilibrada. Nunca pensé que unas gomitas pudieran hacer la diferencia, ¡pero lo han hecho!"</p>
+      </div>
+
+      <div class="review">
+        <h3>✨ Andrea L. - 35 años <span>(Beauty Boost)</span></h3>
+        <p>"Soy fanática del cuidado capilar y Beauty Boost ha sido un salvavidas. Mi cabello crece más rápido, está más fuerte y con más brillo. Además, mis uñas ya no se rompen tan fácil. Me encanta esta marca porque realmente cumple lo que promete."</p>
+      </div>
+
+      <!-- Formulario para agregar nuevas reseñas -->
+      <div class="review-form">
+        <h2>Deja tu reseña 📝</h2>
+        <form id="reviewForm">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" required>
+
+          <label for="age">Edad:</label>
+          <input type="number" id="age" min="18" required>
+
+          <label for="product">Producto:</label>
+          <select id="product">
+            <option value="Radiance Revive">Radiance Revive</option>
+            <option value="Anti-Aging Shield">Anti-Aging Shield</option>
+            <option value="Clear Complexion">Clear Complexion</option>
+            <option value="Beauty Boost">Beauty Boost</option>
+          </select>
+
+          <label for="message">Tu experiencia:</label>
+          <textarea id="message" rows="4" required></textarea>
+
+          <button type="submit">Enviar Reseña</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <!-- Redes Sociales -->
+      <div class="footer-section social-media">
+        <h3>Síguenos</h3>
+        <ul class="social-links">
+          <li><a href="https://facebook.com" target="_blank"><img src="src/2023_Facebook_icon.svg" alt="Facebook"></a></li>
+          <li><a href="https://instagram.com" target="_blank"><img src="src/Instagram_logo_2016.svg" alt="Instagram"></a></li>
+          <li><a href="https://youtube.com" target="_blank"><img src="src/YouTube_social_white_square_(2017).svg" alt="YouTube"></a></li>
+        </ul>
+      </div>
+  
+      <!-- Contacto -->
+      <div class="footer-section contact-info">
+        <h3>Contacto</h3>
+        <!--<p><strong>📍 Dirección:</strong> Calle Belleza, 123, Madrid, España</p>-->
+        <p><strong>📞 Teléfono:</strong> +34 900 123 456</p>
+        <p><strong>✉ Email:</strong> <a href="mailto:contacto@fempower.com">contacto@fempower.com</a></p>
+      </div>
+  
+      <!-- Menú Rápido -->
+      <div class="footer-section quick-links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+  
+      <!-- Políticas -->
+      <div class="footer-section policies">
+        <h3>Legales</h3>
+        <ul>
+          <li><a href="terminos.html">Términos de Uso</a></li>
+          <li><a href="privacidad.html">Política de Privacidad</a></li>
+          <li><a href="devoluciones.html">Política de Devoluciones</a></li>
+        </ul>
+      </div>
+  
+      <!-- Suscripción al Newsletter -->
+      <div class="footer-section newsletter">
+        <h3>Suscríbete</h3>
+        <p>Recibe novedades y promociones exclusivas.</p>
+        <form id="newsletter-form">
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <button type="submit"><strong>Únete al Power</strong>
+
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Formulario de Suscripción -->
+<div id="subscriptionModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Únete a Fem Power</h2>
+    <p>Recibe ofertas exclusivas y consejos de belleza.</p>
+    
+    <form id="subscriptionForm">
+      <!-- Datos Personales -->
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="surname">Apellidos:</label>
+      <input type="text" id="surname" name="surname" required>
+
+      <label for="dob">Fecha de Nacimiento:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <!-- Intereses -->
+      <h3>¿Qué te interesa?</h3>
+      <label><input type="checkbox" name="interests" value="cuidado-piel"> 🧴 Cuidado de la Piel & Antiedad</label>
+      <label><input type="checkbox" name="interests" value="bienestar"> 🌿 Equilibrio & Bienestar Interno</label>
+      <label><input type="checkbox" name="interests" value="belleza"> 💅 Belleza Específica</label>
+      <label><input type="checkbox" name="interests" value="promociones"> 📢 Promociones & Descuentos</label>
+      <label><input type="checkbox" name="interests" value="consejos"> 📰 Consejos de Belleza & Bienestar</label>
+
+      <!-- Frecuencia de Correos -->
+      <h3>Frecuencia de envío</h3>
+      <label><input type="radio" name="frequency" value="quincenal" required> Quincenal</label>
+      <label><input type="radio" name="frequency" value="mensual" required> Mensual</label>
+
+      <!-- Confirmaciones -->
+      <label><input type="checkbox" id="terms" required> ✅ Acepto los términos y condiciones</label>
+      <label><input type="checkbox" id="newsletter"> ✅ Acepto recibir correos con promociones y novedades</label>
+
+      <!-- Botón de Enviar -->
+      <button type="submit" class="subscribe-btn">Confirmar Suscripción</button>
+    </form>
+  </div>
+</div>
+
+  
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 FemPower. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

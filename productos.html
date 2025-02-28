@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Productos - FemPower</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg" href="src/fabicon.svg">
+</head>
+<body id="productsPage">
+  <header>
+    <div class="container header-container">
+      <div class="logo"></div>
+      <!-- Menú de navegación -->
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Menú móvil -->
+      <nav class="mobile-menu">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Buscador y Filtro por categoría -->
+  <section class="search-filters">
+    <div class="container">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." />
+      <select id="filterSelect">
+        <option value="">Todos los productos</option>
+        <option value="mujeres">Productos para Mujeres</option>
+        <!-- Se podrían añadir más categorías -->
+      </select>
+      <button id="searchBtn" class="btn">Buscar</button>
+    </div>
+  </section>
+
+  <!-- Lista de Productos -->
+  <section class="product-list">
+    <div class="container">
+      <h1>Catálogo de Productos</h1>
+      <div id="productList" class="products">
+        <!-- Los productos se insertarán aquí dinámicamente -->
+      </div>
+    </div>
+  </section>
+
+   <!-- Mejora 1: Integración del chatbot de IA (Gemma) en una burbuja flotante de chat -->
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .chatbot-bubble {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .chat-container {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        flex-direction: column;
+    }
+    .chat-header {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+    .chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        height: 300px;
+    }
+    .chat-input {
+        display: flex;
+        border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+    }
+    .chat-input button {
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="chatbot-bubble" onclick="toggleChat()">💬</div>
+<div class="chat-container" id="chat-container">
+    <div class="chat-header">Chatbot Gemma</div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Escribe un mensaje...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+</div>
+
+<script>
+    const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+    const API_KEY = "AIzaSyA2cs89e0P_M24LM6Ua009QMzkrgys_rG0"; // Sustituye por tu clave de API
+    
+    const PROMPT = "Responde con frases cortas de máximo 15 palabras. Solo contesta basandote en los uno de los siguientes productos (Actua como una vendedora de vitaminas para mujeres): \n" +
+    "Radiance Revive: revitaliza piel opaca con Vitamina A y C. \n" +
+    "Anti-Aging Shield: reduce arrugas con Vitamina E y Resveratrol. \n" +
+    "Firm & Elastic: refuerza firmeza y elasticidad con Colágeno y Ácido Hialurónico. \n" +
+    "Clear Complexion: combate acné con Niacina y Zinc. \n" +
+    "Detox Glow: desintoxica y da luminosidad con Ácido Alfa Lipoico. \n" +
+    "Vital Balance: equilibra hormonas y energía con Ginseng y Omega-3. \n" +
+    "Beauty Boost: fortalece cabello y uñas con Biotina y Colágeno. \n" +
+    "Calm & Restore: calma irritaciones con Magnesio y Manzanilla. \n" +
+    "Immune Radiance: refuerza piel e inmunidad con Vitamina D y Probióticos.";
+
+    function toggleChat() {
+        const chatContainer = document.getElementById("chat-container");
+        chatContainer.style.display = chatContainer.style.display === "none" ? "flex" : "none";
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("user-input");
+        const message = userInput.value.trim();
+        if (!message) return;
+        
+        appendMessage("Tú", message);
+        userInput.value = "";
+        
+        fetch(`${API_URL}?key=${API_KEY}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: PROMPT + "\n\nPregunta: " + message }] }]
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.candidates && data.candidates.length > 0) {
+                appendMessage("Gemma", data.candidates[0].content.parts[0].text);
+            } else {
+                appendMessage("Gemma", "No entendí la respuesta. Inténtalo de nuevo.");
+            }
+        })
+        .catch(error => {
+            console.error("Error con la API:", error);
+            appendMessage("Gemma", "Lo siento, hubo un problema al obtener la respuesta.");
+        });
+    }
+
+    function appendMessage(sender, message) {
+        const chatMessages = document.getElementById("chat-messages");
+        const messageElement = document.createElement("div");
+        messageElement.textContent = `${sender}: ${message}`;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+</script>
+
+   <footer>
+    <div class="container footer-container">
+      <!-- Redes Sociales -->
+      <div class="footer-section social-media">
+        <h3>Síguenos</h3>
+        <ul class="social-links">
+          <li><a href="https://facebook.com" target="_blank"><img src="src/2023_Facebook_icon.svg" alt="Facebook"></a></li>
+          <li><a href="https://instagram.com" target="_blank"><img src="src/Instagram_logo_2016.svg" alt="Instagram"></a></li>
+          <li><a href="https://youtube.com" target="_blank"><img src="src/YouTube_social_white_square_(2017).svg" alt="YouTube"></a></li>
+        </ul>
+      </div>
+  
+      <!-- Contacto -->
+      <div class="footer-section contact-info">
+        <h3>Contacto</h3>
+        <!--<p><strong>📍 Dirección:</strong> Calle Belleza, 123, Madrid, España</p>-->
+        <p><strong>📞 Teléfono:</strong> +34 900 123 456</p>
+        <p><strong>✉ Email:</strong> <a href="mailto:contacto@fempower.com">contacto@fempower.com</a></p>
+      </div>
+  
+      <!-- Menú Rápido -->
+      <div class="footer-section quick-links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+  
+      <!-- Políticas -->
+      <div class="footer-section policies">
+        <h3>Legales</h3>
+        <ul>
+          <li><a href="terminos.html">Términos de Uso</a></li>
+          <li><a href="privacidad.html">Política de Privacidad</a></li>
+          <li><a href="devoluciones.html">Política de Devoluciones</a></li>
+        </ul>
+      </div>
+  
+      <!-- Suscripción al Newsletter -->
+      <div class="footer-section newsletter">
+        <h3>Suscríbete</h3>
+        <p>Recibe novedades y promociones exclusivas.</p>
+        <form id="newsletter-form">
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <button type="submit"><strong>Únete al Power</strong>
+
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Formulario de Suscripción -->
+<div id="subscriptionModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Únete a Fem Power</h2>
+    <p>Recibe ofertas exclusivas y consejos de belleza.</p>
+    
+    <form id="subscriptionForm">
+      <!-- Datos Personales -->
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="surname">Apellidos:</label>
+      <input type="text" id="surname" name="surname" required>
+
+      <label for="dob">Fecha de Nacimiento:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <!-- Intereses -->
+      <h3>¿Qué te interesa?</h3>
+      <label><input type="checkbox" name="interests" value="cuidado-piel"> 🧴 Cuidado de la Piel & Antiedad</label>
+      <label><input type="checkbox" name="interests" value="bienestar"> 🌿 Equilibrio & Bienestar Interno</label>
+      <label><input type="checkbox" name="interests" value="belleza"> 💅 Belleza Específica</label>
+      <label><input type="checkbox" name="interests" value="promociones"> 📢 Promociones & Descuentos</label>
+      <label><input type="checkbox" name="interests" value="consejos"> 📰 Consejos de Belleza & Bienestar</label>
+
+      <!-- Frecuencia de Correos -->
+      <h3>Frecuencia de envío</h3>
+      <label><input type="radio" name="frequency" value="quincenal" required> Quincenal</label>
+      <label><input type="radio" name="frequency" value="mensual" required> Mensual</label>
+
+      <!-- Confirmaciones -->
+      <label><input type="checkbox" id="terms" required> ✅ Acepto los términos y condiciones</label>
+      <label><input type="checkbox" id="newsletter"> ✅ Acepto recibir correos con promociones y novedades</label>
+
+      <!-- Botón de Enviar -->
+      <button type="submit" class="subscribe-btn">Confirmar Suscripción</button>
+    </form>
+  </div>
+</div>
+
+  
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 FemPower. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

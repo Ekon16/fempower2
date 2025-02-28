@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito de Compras - FemPower</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg" href="src/fabicon.svg">
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo"></div>
+      <!-- Menú de navegación -->
+      <nav class="main-nav">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Menú móvil -->
+      <nav class="mobile-menu">
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li class="submenu">
+            <a href="productos.html">Productos ▾</a>
+            <ul class="dropdown">
+              <li><a href="cuidado-piel.html">Cuidado de la piel y anti-edad</a></li>
+              <li><a href="bienestar-interno.html">Equilibrio y bienestar interno</a></li>
+              <li><a href="belleza-especifica.html">Belleza específica</a></li>
+            </ul>
+          </li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li class="submenu">
+            <a href="#comunidad">Comunidad ▾</a>
+            <ul class="dropdown">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="reseñas.html">Reseñas y testimonios</a></li>
+            </ul>
+          </li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li>
+            <a href="cuenta.html">Mi Cuenta</a>
+          </li>
+          <li><a href="cart.html">Carrito (<span id="cart-count">0</span>)</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="cart-section">
+    <div class="container">
+      <h1>Carrito de Compras</h1>
+      <!-- Lista de items en el carrito -->
+      <div id="cartItemsSection">
+        <table>
+          <thead>
+            <tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th></th></tr>
+          </thead>
+          <tbody id="cartItemsBody">
+            <!-- Items del carrito generados dinámicamente -->
+          </tbody>
+        </table>
+        <p id="cartTotal"><strong>Total: $0.00</strong></p>
+        <div class="promo-code">
+          <label for="promoCode">Código de Descuento:</label>
+          <input type="text" id="promoCode" placeholder="Introducir código" />
+          <button id="applyPromo" class="btn">Aplicar</button>
+          <p id="promoMessage"></p>
+        </div>
+      </div>
+      <p id="emptyCart" style="display:none;"><em>No hay productos en el carrito.</em></p>
+
+      <!-- Formulario de Pago -->
+      <div id="checkoutSection">
+        <h2>Datos de Pago</h2>
+        <form id="paymentForm">
+          <div class="form-group">
+            <label for="cardName">Nombre en la Tarjeta:</label>
+            <input type="text" id="cardName" required />
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Número de Tarjeta:</label>
+            <input type="text" id="cardNumber" maxlength="19" placeholder="#### #### #### ####" required />
+          </div>
+          <div class="form-group">
+            <label for="cardExp">Expiración (MM/AA):</label>
+            <input type="text" id="cardExp" placeholder="MM/AA" maxlength="5" required />
+          </div>
+          <div class="form-group">
+            <label for="cardCVV">CVV:</label>
+            <input type="text" id="cardCVV" maxlength="4" required />
+          </div>
+          <button type="submit" class="btn">Pagar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-container">
+      <!-- Redes Sociales -->
+      <div class="footer-section social-media">
+        <h3>Síguenos</h3>
+        <ul class="social-links">
+          <li><a href="https://facebook.com" target="_blank"><img src="src/2023_Facebook_icon.svg" alt="Facebook"></a></li>
+          <li><a href="https://instagram.com" target="_blank"><img src="src/Instagram_logo_2016.svg" alt="Instagram"></a></li>
+          <li><a href="https://youtube.com" target="_blank"><img src="src/YouTube_social_white_square_(2017).svg" alt="YouTube"></a></li>
+        </ul>
+      </div>
+  
+      <!-- Contacto -->
+      <div class="footer-section contact-info">
+        <h3>Contacto</h3>
+        <!--<p><strong>📍 Dirección:</strong> Calle Belleza, 123, Madrid, España</p>-->
+        <p><strong>📞 Teléfono:</strong> +34 900 123 456</p>
+        <p><strong>✉ Email:</strong> <a href="mailto:contacto@fempower.com">contacto@fempower.com</a></p>
+      </div>
+  
+      <!-- Menú Rápido -->
+      <div class="footer-section quick-links">
+        <h3>Enlaces Rápidos</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="sobre.html">Sobre Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+  
+      <!-- Políticas -->
+      <div class="footer-section policies">
+        <h3>Legales</h3>
+        <ul>
+          <li><a href="terminos.html">Términos de Uso</a></li>
+          <li><a href="privacidad.html">Política de Privacidad</a></li>
+          <li><a href="devoluciones.html">Política de Devoluciones</a></li>
+        </ul>
+      </div>
+  
+      <!-- Suscripción al Newsletter -->
+      <div class="footer-section newsletter">
+        <h3>Suscríbete</h3>
+        <p>Recibe novedades y promociones exclusivas.</p>
+        <form id="newsletter-form">
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <button type="submit"><strong>Únete al Power</strong>
+
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Formulario de Suscripción -->
+<div id="subscriptionModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Únete a Fem Power</h2>
+    <p>Recibe ofertas exclusivas y consejos de belleza.</p>
+    
+    <form id="subscriptionForm">
+      <!-- Datos Personales -->
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="surname">Apellidos:</label>
+      <input type="text" id="surname" name="surname" required>
+
+      <label for="dob">Fecha de Nacimiento:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <!-- Intereses -->
+      <h3>¿Qué te interesa?</h3>
+      <label><input type="checkbox" name="interests" value="cuidado-piel"> 🧴 Cuidado de la Piel & Antiedad</label>
+      <label><input type="checkbox" name="interests" value="bienestar"> 🌿 Equilibrio & Bienestar Interno</label>
+      <label><input type="checkbox" name="interests" value="belleza"> 💅 Belleza Específica</label>
+      <label><input type="checkbox" name="interests" value="promociones"> 📢 Promociones & Descuentos</label>
+      <label><input type="checkbox" name="interests" value="consejos"> 📰 Consejos de Belleza & Bienestar</label>
+
+      <!-- Frecuencia de Correos -->
+      <h3>Frecuencia de envío</h3>
+      <label><input type="radio" name="frequency" value="quincenal" required> Quincenal</label>
+      <label><input type="radio" name="frequency" value="mensual" required> Mensual</label>
+
+      <!-- Confirmaciones -->
+      <label><input type="checkbox" id="terms" required> ✅ Acepto los términos y condiciones</label>
+      <label><input type="checkbox" id="newsletter"> ✅ Acepto recibir correos con promociones y novedades</label>
+
+      <!-- Botón de Enviar -->
+      <button type="submit" class="subscribe-btn">Confirmar Suscripción</button>
+    </form>
+  </div>
+</div>
+
+  
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 FemPower. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
